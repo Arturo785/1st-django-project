@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+
+{% block title %} Crear empleado {% endblock title %}
+
+{% block content %}
+
+<div class="grid-container">
+    <div class="grid-x">
+        <h1 class="cell">Creando empleado</h1>
+        <!-- Pa guardar imagenes se usa el enctype -->
+        <form class="cell" method="POST" enctype="multipart/form-data">{% csrf_token %} 
+            {{form.as_p}}
+            <div class="cell">
+                <button type="submit" class="success button">Crear</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock content %}
+
+
+
+
+
+

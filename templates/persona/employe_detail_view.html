@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %} Detalles empleado {% endblock title %}
+
+{% block content %}
+
+<div class="grid-container">
+    <div class="grid-x align-center">
+        <h1 class="cell">Detalles empleado: {{object.full_name}}</h1>
+        <div class="card cell large-10" style="width: 500px;">
+            <div class="card-divider">
+                {{object.full_name}}
+            </div>
+            {% if object.image %}
+                <img src="{{ object.image.url }}">
+            {% else %}
+                <!-- If an image doesnt exist in this employee -->
+                <img src="{% static 'img/paris.jpg' %}"> 
+            {% endif %}
+            <div class="card-section">
+              <h4>{{object.get_job_display}}</h4>
+              <p>{{object.department.name}}</p>
+              <p><span class="label">Habilidades:</span></p>
+              <ul class="vertical menu">
+                {% for hability in object.habilities.all %}
+                   <li>{{hability}}</li>
+                {% endfor %}
+              </ul>
+              <p>{{object.hoja_vida}}</p>
+            </div>
+          </div>
+    </div>
+</div>
+
+{% endblock content %}
+

@@ -1,0 +1,8 @@
+<h1>Probando add createView</h1>
+
+<!-- <input type="text" placeholder="Ingresa titulo"> -->
+
+<form method="POST" >{% csrf_token %}
+    {{form.as_p}}
+    <button type="submit">Guardar</button>
+</form>

@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %} Listado de empleados por area {% endblock title %}
+
+{% block content %}
+
+<div class="grid-container">
+
+    <div class="grid-x">
+        <h1 class="cell">Lista de todos los empleados del area</h1>
+
+        <div class="cell">
+            <table>
+                <thead>
+                  <tr>
+                    <th width="200">ID</th>
+                    <th>Nombre</th>
+                    <th width="150">Apellidos</th>
+                    <th width="150">Departamento</th>
+                    <th width="150">Accion</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    {% if object_list %}
+                        {% for employee in object_list %}
+                            <tr>
+                            <td>{{employee.id}}</td>
+                            <td>{{employee.name}}</td>
+                            <td>{{employee.last_name}}</td>
+                            <td>{{employee.department.name}}</td>
+                            <!-- Esto funciona en conjunto con la view de details view que recibe una pk en la url -->
+                            <td><a href="{% url 'persona_app:detail_of_employee' employee.id %}" class="button">Detalles</a></td>
+                            </tr>
+                        {% endfor %}
+                   {% endif %}
+                </tbody>
+              </table>
+        </div>
+
+    </div>
+
+</div>
+
+
+
+{% endblock content %}
+
+
+
+
+
+    {% for empleado in object_list %}
+
+        <li> {{empleado}} </li>
+
+    {% endfor %}

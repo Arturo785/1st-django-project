@@ -1,0 +1,17 @@
+<h1>Habilidades wey</h1>
+
+
+<form method="GET">{% csrf_token %}
+    <input type="text" id="employee_search" name="employee_search" placeholder="Ingrese Nombre empleado">
+    <button type="submit">Buscar</button>
+</form>
+
+
+<ul>
+    {% for hability in habilidades %}
+
+        <li> {{hability}} </li>
+
+    {% endfor %}
+
+</ul>
